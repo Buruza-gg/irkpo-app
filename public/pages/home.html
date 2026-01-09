@@ -1,0 +1,57 @@
+<div class="hero-section">
+    <div style="text-transform: uppercase; font-size: 12px; letter-spacing: 2px; opacity: 0.7; margin-bottom: 20px; font-weight: 600;">
+        Государственное бюджетное профессиональное образовательное учреждение
+    </div>
+    
+    <h1 class="hero-title">
+        Иркутский региональный колледж<br>педагогического образования
+    </h1>
+
+    <p class="hero-subtitle">
+        Цифровая среда для студентов и преподавателей.
+    </p>
+
+    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        <button class="hero-btn" onclick="router('schedule')">
+            📅 Расписание
+        </button>
+        
+        <a href="https://irkpo.ru" target="_blank" style="text-decoration: none;">
+            <button class="hero-btn" style="background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.4); backdrop-filter: blur(5px);">
+                🌐 Официальный сайт
+            </button>
+        </a>
+    </div>
+</div>
+
+<div class="services-grid">
+    <div class="service-card" onclick="router('schedule')">
+        <div class="service-icon">📅</div>
+        <div class="service-title">Расписание</div>
+        <div class="service-desc">
+            Актуальное расписание занятий. Узнайте время пар, кабинет и преподавателя на сегодня.
+        </div>
+    </div>
+
+    <div class="service-card" onclick="router('grades')">
+        <div class="service-icon">🎓</div>
+        <div class="service-title">Успеваемость</div>
+        <div class="service-desc">
+            Цифровой журнал. Следите за своими оценками, пропусками и итоговыми баллами.
+        </div>
+    </div>
+
+    <a href="https://irkpo.ru/moodle/" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="service-card">
+            <div class="service-icon" style="color: #f97316; background: #fff7ed;">M</div>
+            <div class="service-title">СДО Moodle</div>
+            <div class="service-desc">
+                Дистанционное обучение. Курсы, лекции и загрузка домашних заданий.
+            </div>
+        </div>
+    </a>
+</div>
+
+<div style="margin-top: 60px; text-align: center; color: var(--text-secondary); padding-bottom: 20px;">
+    <p style="font-size: 14px;">© 2024 ГБПОУ ИО ИРКПО. Цифровой кампус.</p>
+</div>
