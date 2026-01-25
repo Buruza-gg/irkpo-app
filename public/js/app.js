@@ -69,7 +69,6 @@ function renderScheduleUI(data) {
     const container = document.getElementById('schedule-content');
     const days = data.schedule.items; 
     const weekName = data.schedule.currentWeekName || "Текущая неделя";
-    
     let html = `
         <div class="schedule-header">
             <div class="schedule-title">Расписание <span class="group-highlight">${data.group}</span></div>
@@ -77,7 +76,6 @@ function renderScheduleUI(data) {
         </div>
         <div class="days-grid">
     `;
-
     days.forEach(day => {
         html += `<div class="day-card"><div class="day-header">${day.dayOfWeek}</div><div class="day-body">`;
         if (day.lessonIndexes && day.lessonIndexes.length > 0) {
@@ -88,18 +86,21 @@ function renderScheduleUI(data) {
                         let subjectName = lesson.lessonName || (lesson.comment && lesson.comment.includes('куратор') ? lesson.comment : "Без названия");
                         const isCurator = subjectName.toLowerCase().includes('куратор');
                         
-                        // НОВОЕ: Обработка подгруппы
-                        // Если в API пришло поле subgroup, создаем HTML для него
-                        const subgroupBadge = lesson.subgroup ? `<span class="lesson-subgroup">${lesson.subgroup}</span>` : ''; 
-
+                        // --- ЛОГИКА ОТОБРАЖЕНИЯ АУДИТОРИИ И ПОДГРУППЫ ---
+                        const roomHtml = lesson.classroom ? `<span class="lesson-room">Ауд. ${lesson.classroom}</span>` : '';
+                        // Если есть подгруппа, добавляем её. Можно добавить запятую или скобки по желанию
+                        const subgroupHtml = lesson.subgroup ? `<span class="lesson-subgroup">${lesson.subgroup}</span>` : '';
+                        
                         html += `<div class="lesson-item ${isCurator ? 'curator' : ''}">
                                     <div class="lesson-time">${time}</div>
                                     <div class="lesson-name">${subjectName}</div>
                                     <div class="lesson-details">
                                         <div class="teacher-name">${lesson.teacherName || "Преподаватель не указан"}</div>
-                                        <div class="lesson-meta">
-                                            ${lesson.classroom ? `<span class="lesson-room">Ауд. ${lesson.classroom}</span>` : ''}
-                                            ${subgroupBadge} <!-- Вставляем подгруппу здесь -->
+                                        
+                                        <!-- Единый блок для местоположения -->
+                                        <div class="lesson-location">
+                                            ${roomHtml}
+                                            ${subgroupHtml}
                                         </div>
                                     </div>
                                  </div>`;
@@ -110,7 +111,6 @@ function renderScheduleUI(data) {
         html += `</div></div>`;
     });
     html += `</div>`;
-    
     container.style.opacity = 0; container.innerHTML = html;
     setTimeout(() => { container.style.transition = 'opacity 0.5s ease'; container.style.opacity = 1; }, 50);
 }
