@@ -89,7 +89,7 @@ function renderScheduleUI(data) {
                         // --- ЛОГИКА ОТОБРАЖЕНИЯ АУДИТОРИИ И ПОДГРУППЫ ---
                         const roomHtml = lesson.classroom ? `<span class="lesson-room">Ауд. ${lesson.classroom}</span>` : '';
                         // Если есть подгруппа, добавляем её. Можно добавить запятую или скобки по желанию
-                        const subgroupHtml = lesson.subgroup ? `<span class="lesson-subgroup">${lesson.subgroup}</span>` : '';
+                        const subgroupHtml = lesson.subgroup ? `<span class="lesson-subgroup">Подгруппа ${lesson.subgroup}</span>` : '';
                         
                         html += `<div class="lesson-item ${isCurator ? 'curator' : ''}">
                                     <div class="lesson-time">${time}</div>
